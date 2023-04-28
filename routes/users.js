@@ -50,4 +50,12 @@ router.post("/signin", (req, res) => {
   });
 });
 
+router.post("/getUser", (req, res) => {
+  User.findOne({ token: req.body.token }).then((data) => {
+    if (data) {
+      res.json({ User: data });
+    }
+  });
+});
+
 module.exports = router;
